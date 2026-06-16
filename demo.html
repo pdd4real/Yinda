@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>音达康护 AudioCare · 社区总控演示</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="demo-page">
+    <header class="site-header demo-header">
+      <a class="brand" href="index.html" aria-label="返回音达康护首页">
+        <span aria-hidden="true">音</span>
+        <strong>音达康护<em>AudioCare</em></strong>
+      </a>
+      <nav aria-label="演示导航">
+        <a href="#overview">总览</a>
+        <a href="#incident">事件处置</a>
+        <a href="#dispatch">派单闭环</a>
+        <a href="#devices">设备状态</a>
+      </nav>
+      <a class="header-login" href="index.html">返回首页</a>
+    </header>
+
+    <main class="demo-shell">
+      <section class="demo-hero" id="overview">
+        <div>
+          <p class="eyebrow">社区总控演示</p>
+          <h1>社区总控台</h1>
+          <p class="lead">
+            青棠社区夜间值班中，系统同时监管 48 户重点老人，
+            统一处理音频异常、视频跌倒、设备离线和家属确认状态。
+          </p>
+        </div>
+        <div class="shift-card">
+          <span>21:46 夜间加强模式</span>
+          <strong>3 个待确认事件</strong>
+          <p>危急 1 · 中风险 2 · 低风险自动归档 17</p>
+        </div>
+      </section>
+
+      <section class="ops-grid">
+        <article class="ops-card critical">
+          <span>CRITICAL</span>
+          <strong>王奶奶 H-032</strong>
+          <p>客厅呼救 + 疑似跌倒，剩余响应时限 01:42。</p>
+        </article>
+        <article class="ops-card">
+          <span>MEDIUM</span>
+          <strong>李爷爷 H-018</strong>
+          <p>厨房撞击声，视频未见跌倒，等待家属确认。</p>
+        </article>
+        <article class="ops-card">
+          <span>DEVICE</span>
+          <strong>陈阿姨 H-041</strong>
+          <p>卧室麦克风噪声升高，建议远程重启。</p>
+        </article>
+        <article class="ops-card">
+          <span>CLOSED</span>
+          <strong>今日闭环率 96%</strong>
+          <p>已完成 24 条社区响应记录，平均确认 38 秒。</p>
+        </article>
+      </section>
+
+      <section class="section console-section" id="incident">
+        <div class="section-head">
+          <p class="eyebrow">事件处置台</p>
+          <h2>事件处置</h2>
+        </div>
+        <div class="console-wrap">
+          <div class="console">
+            <aside class="console-rail">
+              <div class="rail-title">守护模式</div>
+              <button class="rail active" data-mode="night">夜间加强</button>
+              <button class="rail" data-mode="normal">日间守护</button>
+              <button class="rail" data-mode="away">家属外出</button>
+              <div class="resident-list">
+                <h4>事件队列</h4>
+                <button class="resident active" data-name="王奶奶" data-room="客厅" data-risk="危急">H-032 王奶奶<span>危急</span></button>
+                <button class="resident" data-name="李爷爷" data-room="厨房" data-risk="中">H-018 李爷爷<span>中</span></button>
+                <button class="resident" data-name="陈阿姨" data-room="卧室" data-risk="低">H-041 陈阿姨<span>低</span></button>
+              </div>
+            </aside>
+            <div class="monitor">
+              <div class="monitor-top">
+                <strong>AudioCare Community Console</strong>
+                <em id="modeLabel">夜间加强模式</em>
+              </div>
+              <div class="monitor-body">
+                <div class="house-plan">
+                  <div class="plan-status">
+                    <span id="planResident">H-032 王奶奶</span>
+                    <strong id="planStatus">危急事件复核中</strong>
+                    <em>客厅 · 麦克风 A2 · 摄像头 C1</em>
+                  </div>
+                  <div class="room living active">
+                    <strong>客厅</strong>
+                    <i id="planEvent">呼救</i>
+                    <span class="ring"></span>
+                    <span class="sensor mic">MIC A2</span>
+                    <span class="sensor cam">CAM C1</span>
+                    <span class="trace one">21:46:03</span>
+                    <span class="trace two">跌倒复核</span>
+                  </div>
+                  <div class="room kitchen">
+                    <strong>厨房</strong>
+                    <i>撞击声</i>
+                    <span class="sensor mic">MIC B1</span>
+                  </div>
+                  <div class="room bed">
+                    <strong>卧室</strong>
+                    <i>安静</i>
+                    <span class="sensor cam">CAM C2</span>
+                  </div>
+                  <div class="room bath">
+                    <strong>卫生间</strong>
+                    <i>无事件</i>
+                    <span class="sensor sos">SOS</span>
+                  </div>
+                  <div class="video-proof">
+                    <span>视频复核</span>
+                    <strong>疑似跌倒 0.72</strong>
+                    <p>画面检测到长时间低姿态静止，已截取 12s 证据片段。</p>
+                  </div>
+                  <div class="plan-timeline">
+                    <b>处置进度</b>
+                    <span>声音识别</span>
+                    <span>视频复核</span>
+                    <span>家属通知</span>
+                    <span>社区派单</span>
+                  </div>
+                </div>
+                <div class="event-panel">
+                  <div class="verdict">
+                    <span id="riskTag">CRITICAL</span>
+                    <h3 id="incidentTitle">王奶奶 · 客厅呼救事件</h3>
+                    <p id="incidentDesc">声音事件“呼救”持续 4.8s，视频检测到疑似跌倒，建议 2 分钟内联动社区值班员与 120。</p>
+                  </div>
+                  <dl class="signal-grid">
+                    <div><dt>音频置信度</dt><dd>0.86</dd></div>
+                    <div><dt>跌倒概率</dt><dd>0.72</dd></div>
+                    <div><dt>静止时长</dt><dd>118s</dd></div>
+                    <div><dt>响应时限</dt><dd>2min</dd></div>
+                  </dl>
+                  <div class="audio-evidence" aria-label="音频证据条">
+                    <span style="--h: 40%"></span><span style="--h: 74%"></span><span style="--h: 52%"></span>
+                    <span style="--h: 88%"></span><span style="--h: 46%"></span><span style="--h: 68%"></span>
+                    <span style="--h: 35%"></span><span style="--h: 80%"></span><span style="--h: 58%"></span>
+                  </div>
+                  <div class="task-card">
+                    <h4>小程序通知</h4>
+                    <p>已推送给家属联系人、社区网格员、附近志愿者。</p>
+                    <button id="dispatchBtn">下发上门任务</button>
+                    <span id="dispatchState">等待总控确认</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <figure class="console-image">
+            <img src="assets/community-console-scene.png" alt="社区总控大屏产品效果图" />
+          </figure>
+        </div>
+      </section>
+
+      <section class="section response-grid" id="dispatch">
+        <div class="section-head two-col">
+          <div>
+            <p class="eyebrow">派单闭环</p>
+            <h2>派单闭环</h2>
+          </div>
+          <p>每次异常都会形成可追溯记录，记录确认人、上门人员、家属回复和升级结果。</p>
+        </div>
+        <div class="timeline">
+          <article><b>21:46:03</b><span>客厅呼救声触发，TRUNet 完成降噪。</span></article>
+          <article><b>21:46:07</b><span>视频复核疑似跌倒，事件升级为危急。</span></article>
+          <article><b>21:46:19</b><span>家属未接听，系统通知社区网格员。</span></article>
+          <article><b>21:46:32</b><span>值班员确认派单，上门任务进入小程序。</span></article>
+        </div>
+        <div class="phone-card">
+          <span>家属端小程序</span>
+          <strong>王奶奶发生疑似跌倒</strong>
+          <p>位置：青棠社区 3 栋 602 · 客厅</p>
+          <button>查看证据片段</button>
+          <button class="ghost">我已联系老人</button>
+        </div>
+      </section>
+
+      <section class="section device-board" id="devices">
+        <div class="section-head">
+          <p class="eyebrow">设备与模型状态</p>
+          <h2>运行状态</h2>
+        </div>
+        <div class="device-grid">
+          <article><span>麦克风阵列</span><strong>47 / 48 在线</strong><p>H-041 噪声底升高，建议远程重启。</p></article>
+          <article><span>摄像模块</span><strong>48 / 48 在线</strong><p>夜间红外正常，跌倒检测服务延迟 84ms。</p></article>
+          <article><span>模型服务</span><strong>SED 92%</strong><p>今日有效声音事件识别准确率按人工复核回填。</p></article>
+          <article><span>数据安全</span><strong>短窗留证</strong><p>仅保留异常前后证据片段，普通音视频不入库。</p></article>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

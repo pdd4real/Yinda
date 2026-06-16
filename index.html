@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>音达康护 AudioCare · 基于音频感知的智慧居家养老系统</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="音达康护 AudioCare">
+        <span aria-hidden="true">音</span>
+        <strong>音达康护<em>AudioCare</em></strong>
+      </a>
+      <nav aria-label="页面导航">
+        <a href="#need">背景需求</a>
+        <a href="#system">系统方案</a>
+        <a href="#tech">关键技术</a>
+        <a href="#evidence">测试前景</a>
+      </nav>
+      <button class="header-login" id="loginBtn">登录演示</button>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">基于音频感知的智慧居家养老系统</p>
+          <h1>声音守护，<br />及时响应</h1>
+          <p class="lead">
+            “音达康护”面向独居、高龄、慢病风险老人，把居家声音事件检测、视频跌倒复核、
+            Web 总控平台和小程序派单连成闭环。系统以声音补足视频死角，
+            以社区响应补足家庭照护缺口。
+          </p>
+          <div class="hero-actions">
+            <button class="button primary" type="button" id="heroLoginBtn">登录演示</button>
+            <a class="button secondary" href="#system">查看系统链路</a>
+          </div>
+          <dl class="hero-stats">
+            <div><dt>31031 万</dt><dd>2024 年末 60 岁及以上人口</dd></div>
+            <div><dt>1.18 亿</dt><dd>空巢和独居老人规模</dd></div>
+            <div><dt>3 端协同</dt><dd>硬件设备 / Web 总控 / 小程序</dd></div>
+          </dl>
+        </div>
+        <figure class="hero-visual">
+          <img src="assets/hero-care-scene.png" alt="居家老人、音频感知设备与社区总控联动示意图" />
+          <figcaption>
+            <span class="status-dot"></span>
+            青棠社区 · 客厅呼救声已进入复核队列
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="section need" id="need">
+        <div class="section-head two-col">
+          <div>
+            <p class="eyebrow">背景需求</p>
+            <h2>养老痛点</h2>
+          </div>
+          <p>
+            面向长期独居、慢病风险和社区重点关注老人，系统用声音补足视频盲区，
+            用分级告警把异常事件交给家属和社区及时处理。
+          </p>
+        </div>
+        <div class="need-grid">
+          <article>
+            <span>01</span>
+            <h3>视频监控有盲区</h3>
+            <p>老人摔倒、呼救或烟雾报警可能发生在摄像头遮挡区，单纯画面监控容易漏判。</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>可穿戴依赖佩戴</h3>
+            <p>手环、项链对老人配合度、电量、佩戴习惯要求高，不适合长期无感守护。</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>传感器难解释</h3>
+            <p>门磁、压力、红外等能记录变化，但难判断“日常活动”还是“紧急事件”。</p>
+          </article>
+          <article class="accent">
+            <span>方案切入</span>
+            <h3>声音补盲 + 视频复核</h3>
+            <p>先捕捉呼救、尖叫、报警器、撞击等关键声音，再用视频跌倒检测和社区处置闭环确认。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section system" id="system">
+        <div class="section-head">
+          <p class="eyebrow">系统方案</p>
+          <h2>系统链路</h2>
+        </div>
+        <div class="system-layout">
+          <div class="system-flow">
+            <article><b>01</b><h3>硬件采集</h3><p>集成摄像模块、麦克风组件、内置处理器，实时采集居家音视频。</p></article>
+            <article><b>02</b><h3>算法处理</h3><p>TRUNet 音源增强后进入 ATST-Frame 声音事件检测，并结合 YOLOv5 跌倒识别。</p></article>
+            <article><b>03</b><h3>事件融合</h3><p>综合事件类型、置信度、持续时间、房间位置和住户画像，生成风险等级。</p></article>
+            <article><b>04</b><h3>多端响应</h3><p>Web 总控端确认，小程序通知家属、社区网格员、志愿者，并记录处置结果。</p></article>
+          </div>
+          <div class="platform-card">
+            <div class="architecture-map" aria-label="音达康护系统架构示意">
+              <div class="arch-node home"><b>家庭端</b><span>摄像头 / 麦克风 / 边缘处理器</span></div>
+              <div class="arch-node model"><b>算法层</b><span>音源增强 · 声音事件检测 · 跌倒识别</span></div>
+              <div class="arch-node service"><b>服务层</b><span>事件融合 · 风险分级 · 证据归档</span></div>
+              <div class="arch-node app"><b>应用层</b><span>Web 总控 · 家属小程序 · 社区派单</span></div>
+            </div>
+            <div class="platform-copy">
+              <h3>三端协同</h3>
+              <p>硬件设备负责采集，移动端负责家属查看和告警接收，总控端负责多户监管和应急派单。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section tech" id="tech">
+        <div class="section-head two-col">
+          <div>
+            <p class="eyebrow">关键技术</p>
+            <h2>关键技术</h2>
+          </div>
+          <p>
+            声音事件检测负责先发现异常，视频跌倒识别负责复核，风险融合引擎再决定提醒、告警或派单。
+          </p>
+        </div>
+        <div class="tech-board">
+          <div class="tech-hero">
+            <div class="wave-bars" aria-hidden="true">
+              <i style="--h: 42%"></i><i style="--h: 72%"></i><i style="--h: 54%"></i><i style="--h: 88%"></i>
+              <i style="--h: 62%"></i><i style="--h: 76%"></i><i style="--h: 46%"></i><i style="--h: 68%"></i>
+            </div>
+            <h3>可解释证据链</h3>
+            <p>输出事件类别、置信度、发生时间戳和证据片段，再与视频跌倒概率共同进入风险融合引擎。</p>
+          </div>
+          <div class="tech-list">
+            <article><small>SED</small><h3>ATST-Frame 自监督声音事件检测</h3><p>利用帧级音频表示适配尖叫、呼救、烟雾报警器等居家关键事件。</p></article>
+            <article><small>Enhance</small><h3>TRUNet 音源增强</h3><p>抑制电视声、人声和环境噪声，让弱呼救和报警声更容易被识别。</p></article>
+            <article><small>Vision</small><h3>YOLOv5 跌倒行为检测</h3><p>识别跌倒、长时间静止等行为，为高风险声音提供跨模态复核。</p></article>
+            <article><small>Fusion</small><h3>分级告警与任务派发</h3><p>普通提醒、重点关注、紧急告警分别进入家属确认、社区走访和应急联动流程。</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section evidence" id="evidence">
+        <div class="section-head two-col">
+          <div>
+            <p class="eyebrow">测试与前景</p>
+            <h2>测试前景</h2>
+          </div>
+          <p>
+            围绕模型可靠性、功能有效性、用户可用性和系统联调验证落地能力，覆盖家庭、社区和养老机构场景。
+          </p>
+        </div>
+        <div class="evidence-grid">
+          <article><h3>可靠性测试</h3><p>声音事件检测模型与视频跌倒行为检测模型分别验证，覆盖关键异常事件。</p></article>
+          <article><h3>有效性测试</h3><p>真实居家声场中验证呼救、尖叫、烟雾报警器等事件能被正确识别。</p></article>
+          <article><h3>可用性测试</h3><p>验证家属端告警接收、社区端确认派单、响应反馈的完整流程。</p></article>
+          <article><h3>应用场景</h3><p>家庭无感守护、社区统一监管、养老机构夜间巡护均具备延展空间。</p></article>
+        </div>
+        <div class="scenario-strip">
+          <article><b>家庭</b><span>客厅呼救、跌倒、烟雾报警声进入秒级识别。</span></article>
+          <article><b>社区</b><span>总控按住户画像、风险等级和响应时限统一调度。</span></article>
+          <article><b>机构</b><span>夜间巡护从人工查房扩展为异常事件优先处理。</span></article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-foot">
+      <strong>音达康护 AudioCare</strong>
+      <span>声音补盲 · 视频复核 · 分级告警 · 社区派单</span>
+    </footer>
+
+    <div class="auth-modal" id="loginModal" hidden>
+      <div class="auth-backdrop" data-close></div>
+      <form class="auth-card" id="loginForm">
+        <button type="button" class="auth-x" data-close aria-label="关闭">×</button>
+        <h3>登录总控演示</h3>
+        <p>请输入演示账号后进入社区总控台。</p>
+        <label>账号<input id="authUser" autocomplete="username" /></label>
+        <label>密码<input id="authPass" type="password" autocomplete="current-password" /></label>
+        <p class="auth-err" id="authErr" hidden>账号或密码错误</p>
+        <button class="button primary" type="submit">进入演示</button>
+      </form>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
