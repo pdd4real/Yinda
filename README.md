@@ -1,41 +1,45 @@
-# 音达康护 AudioCare
+# 音达康护 · AudioCare
 
-> 基于音频感知的智慧居家养老系统
+基于音频感知的智慧居家养老系统源码仓库。
 
-面向独居、高龄、慢病风险老人的居家养老系统。以声音事件检测补足视频监控盲区，以视频跌倒复核确认风险，通过 Web 总控平台和小程序派单形成完整闭环。
+## 核心能力
 
-## 技术栈
+- 声音事件检测：对呼救、尖叫、烟雾报警、玻璃破碎等事件做分帧识别。
+- 音源增强：用 TRUNet 风格的前处理抑制环境噪声，提高弱事件召回。
+- 跨模态感知：融合音频事件、摄像头跌倒检测和设备位置，降低误报。
+- 分级报警：按事件等级通知家属、社区人员、志愿者或线下救援。
+- 总控平台：展示住户态势、实时事件流、历史音视频记录和派单状态。
 
-- **声音事件检测 (SED)**: ATST-Frame 自监督音频帧级表示
-- **音源增强**: TRUNet 降噪增强
-- **视频复核**: YOLOv5 跌倒行为检测
-- **前端**: 纯静态 HTML/CSS/JS，响应式设计
+## 仓库结构
 
-## 在线演示
-
-访问 [GitHub Pages](https://your-username.github.io/your-repo/) 查看在线演示。
-
-- 首页：系统介绍与背景
-- 总控台：点击「登录演示」→ 账号 `admin` / 密码 `admin`
+```text
+.
+├── backend/          # Web 总控端 API 与告警业务逻辑
+├── edge-agent/       # 家庭摄像头/拾音设备侧采集代理
+├── mini-program/     # 微信小程序
+├── ml/               # SED、音源增强、跌倒检测算法模块
+└── docs/             # 架构与接口说明
+```
 
 ## 本地运行
 
-直接用浏览器打开 `index.html`，或使用任意静态文件服务器：
+后端逻辑测试：
 
 ```bash
-# Python 3
-python -m http.server 8080
-
-# Node.js (npx)
-npx serve .
+python3 -m unittest discover backend/tests
+python3 -m backend.app.main
 ```
 
-## 项目结构
+## 默认账号
 
-```
-├── index.html      # 首页（系统介绍）
-├── demo.html       # 社区总控演示
-├── styles.css      # 全局样式
-├── app.js          # 交互逻辑
-└── assets/         # 图片资源
-```
+- 账号：`admin`
+- 密码：`123456`
+
+## 数据流
+
+1. `edge-agent` 从集成摄像头采集音视频片段并上传。
+2. `ml/audio_enhance` 清理低信噪比音频。
+3. `ml/sed` 输出帧级声音事件概率与时间戳。
+4. `ml/vision` 输出跌倒/长时间静止等行为信号。
+5. `backend` 融合多源证据，生成告警和上门任务。
+6. `mini-program` 服务家属和志愿者，业务结果由 `backend` 对外提供。
